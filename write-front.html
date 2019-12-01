@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Write Front</title>
+  <link rel="stylesheet" href="default.css">
+</head>
+<body>
+  <div class="content">
+  <div class="japanese">
+      <span class="dictionary">{{dictionary_form}}</span><span class="hidden{{dictionary_form_kana}}">
+      - 
+      <span class="reading">{{dictionary_form_kana}}</span></span></div>
+    <div class="translation">{{translation}}</div>
+    <div class="controls">
+      <button onclick="init('{{dictionary_form}}', true)">Guides</button>
+      <button onclick="init('{{dictionary_form}}', false)">Empty Boxes</button>
+    </div>
+    <div id="canvas_container" class="canvas_container"></div>
+  </div>
+  <script>      
+  let dictionary_form = '';
+
+  const lineWidth = 2.5;
+  const positionsToKeep = 4;
+  const drawColor = 'black';
+  const templateColor = '#9cc2ff';
+
+  let canvasWrappers = [];
+  let canvases = [];
+  let ctxs = [];
+  let offsets = [];
+  let positions = [];
+
+  let penDown = false;
+  let body;
+  let drawCharacters = false;
+
+
+  function startStroke(e, i) {
+    penDown = true;
+    positions[i] = [{ x: e.pageX - offsets[i].x, y: e.pageY - offsets[i].y }];
+    // Had the next line in the resize function. There it did not have effects, which I did not understand.
+    ctxs[i].lineWidth = lineWidth / canvases[0].width * 500;
+  }
+
+  function continueStroke(e, i) {
+    if (penDown) {
+      positions[i].push({ x: e.pageX - offsets[i].x, y: e.pageY - offsets[i].y });
+      ctxs[i].beginPath();
+      ctxs[i].moveTo(positions[i][0].x, positions[i][0].y);
+      for (let j=1; j<positions[i].length; j++) {
+        ctxs[i].lineTo(positions[i][j].x, positions[i][j].y);
+      }
+      if (positions[i].length > positionsToKeep) {
+        positions[i].shift();
+      }
+      ctxs[i].stroke();
+      ctxs[i].closePath();
+    }
+  }
+
+  function handleTouchStart(e, i) {
+    let strippedEvent = {
+      pageX: e.changedTouches[0].pageX,
+      pageY: e.changedTouches[0].pageY
+    }
+    startStroke(e, i);
+  }
+
+  function handleTouchMove(e, i) {
+    e.preventDefault();
+    let strippedEvent = {
+      pageX: e.changedTouches[0].pageX,
+      pageY: e.changedTouches[0].pageY
+    }
+    continueStroke(strippedEvent, i);
+  }
+
+  function endStroke(e, i) {
+    penDown = false;
+  }
+
+  function resize(e) {
+    for (let canvas of canvases) {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+    adjustOffsets();
+    if (drawCharacters) {
+      for (let i=0; i < ctxs.length; i++) {
+        ctxs[i].fillStyle = templateColor;
+        ctxs[i].font = canvases[0].width + 'px "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
+        ctxs[i].fillText(dictionary_form[i], 0, canvases[0].height * 0.9);
+        ctxs[i].fillStyle = drawColor;
+      }
+    }
+  }
+
+  function adjustOffsets() {
+    //let scrollOffset = body.scrollTop;
+    offsets = [];
+    for (let canvasWrapper of canvasWrappers) {
+      offsets.push({
+        x: canvasWrapper.offsetLeft,
+        y: canvasWrapper.offsetTop
+      });
+    }
+  }
+
+  function removeEventListeners() {
+    window.removeEventListener('resize', resize);
+    document.removeEventListener('scroll', adjustOffsets);
+    window.removeEventListener('beforeunload', removeEventListeners);
+  }
+  
+  function init(word, empty) {
+    drawCharacters = empty ? true : false;
+    removeEventListeners();
+    dictionary_form = word;
+    canvases = [];
+    ctxs = [];
+    canvasWrappers = [];
+    dictionary_form = dictionary_form.split('');
+    let canvasContainer = document.getElementById('canvas_container');
+    for (let i=0; i<dictionary_form.length; i++) {
+      let canvas = document.createElement('canvas');
+      let canvasWrapper = document.createElement('div');
+      canvasWrapper.className = 'canvas_wrapper';
+      canvas.addEventListener('mousedown', e => startStroke(e, i));
+      canvas.addEventListener('touchstart', e => handleTouchStart(e, i));
+      canvas.addEventListener('mousemove', e => continueStroke(e, i));
+      canvas.addEventListener('touchmove', e => handleTouchMove(e, i));
+      canvas.addEventListener('mouseup', e => endStroke(e, i));
+      canvas.addEventListener('touchend', e => endStroke(e, i));
+      canvas.addEventListener('mouseleave', e => endStroke(e, i));
+      canvasWrapper.appendChild(canvas);
+      canvasContainer.appendChild(canvasWrapper);
+      canvases.push(canvas);
+      ctxs.push(canvas.getContext('2d'));
+      canvasWrappers.push(canvasWrapper);
+    }
+    //body = document.getElementsByTagName('body')[0];
+    body = document.getElementsByClassName('card')[0];
+    resize();
+  }
+  </script>
+</body>
+</html>

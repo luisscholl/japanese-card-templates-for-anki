@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Write Back</title>
+  <link rel="stylesheet" href="default.css">
+</head>
+
+<body>
+  <div class="content">
+    <div>Which word did you just write?</div>
+    <div>
+      <button id="show_answer_japanese" onclick="
+        document.getElementById('show_answer_japanese').className = 'hidden';
+        document.getElementById('answer_japanese').className = 'not_hidden';
+      ">Show me</button>
+      <span id="answer_japanese" class="hidden">
+        <span class="dictionary">{{dictionary_form}}</span><span class="hidden{{dictionary_form_kana}}">
+          -
+          <span class="reading">{{dictionary_form_kana}}</span></span>
+      </span>
+    </div>
+    <div>What does it mean?</div>
+    <div>
+      <button id="show_answer_translation" onclick="
+        document.getElementById('show_answer_translation').className = 'hidden';
+        document.getElementById('answer_translation').className = 'not_hidden';
+      ">Show me</button>
+      <span id="answer_translation" class="hidden">{{translation}}</span>
+    </div>
+  </div>
+</body>
+
+</html>
