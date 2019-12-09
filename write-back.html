@@ -9,28 +9,53 @@
 </head>
 
 <body>
+  <!-- copy start -->
   <div class="content">
-    <div>Which word did you just write?</div>
     <div>
       <button id="show_answer_japanese" onclick="
         document.getElementById('show_answer_japanese').className = 'hidden';
         document.getElementById('answer_japanese').className = 'not_hidden';
-      ">Show me</button>
+      ">Which word did you write?</button>
       <span id="answer_japanese" class="hidden">
         <span class="dictionary">{{dictionary_form}}</span><span class="hidden{{dictionary_form_kana}}">
           -
           <span class="reading">{{dictionary_form_kana}}</span></span>
       </span>
     </div>
-    <div>What does it mean?</div>
     <div>
       <button id="show_answer_translation" onclick="
         document.getElementById('show_answer_translation').className = 'hidden';
         document.getElementById('answer_translation').className = 'not_hidden';
-      ">Show me</button>
+      ">What does it mean?</button>
       <span id="answer_translation" class="hidden">{{translation}}</span>
     </div>
+    <div id="type" class="hidden">
+      <button onclick="showType()">Of What type is it?</button>
+    </div>
   </div>
+  <script>
+  const typeWords = {
+    'ichidan-verb': '一段動詞',
+    'godan-verb': '五段動詞',
+    'irregular-verb': '不規則動詞'
+  };
+
+  function showType() {
+    let type = '{{type}}';
+    if (typeWords[type]) {
+      document.getElementById('type').innerHTML = 
+      `<div class="${type}">${typeWords[type]}</div>`;
+    }
+  }
+
+  function initType() {
+    let type = '{{type}}';
+    if (typeWords[type]) document.getElementById('type').className = 'type';
+  }
+
+  setInterval(initType, 100);
+  </script>
+  <!-- copy end -->
 </body>
 
 </html>

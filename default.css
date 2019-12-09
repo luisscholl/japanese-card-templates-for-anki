@@ -59,3 +59,34 @@ canvas {
 .hidden {
     display: none;
 }
+
+button {
+    border: none;
+    font-size: 0.6em;
+    background-color: #dadada;
+    border-radius: 0.2em;
+    padding: 0.2em 0.3em 0.15em 0.3em;
+}
+
+.type div {
+    color: whitesmoke;
+    display: inline-block;
+    border-radius: 0.22em;
+    padding: 0.2em 0.3em 0.15em 0.3em;
+}
+
+.type .ichidan-verb {
+    background-color: #5e0000;
+}
+
+.type .godan-verb {
+    background-color: #0e005e;
+}
+
+.type .irregular-verb {
+    background-color: #005e14;
+}
+
+.spacer-bottom {
+    height: 25vh;
+}

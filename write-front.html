@@ -7,17 +7,21 @@
   <link rel="stylesheet" href="default.css">
 </head>
 <body>
+  <!-- copy start -->
   <div class="content">
-  <div class="japanese">
+    <div class="japanese">
       <span class="dictionary">{{dictionary_form}}</span><span class="hidden{{dictionary_form_kana}}">
       - 
       <span class="reading">{{dictionary_form_kana}}</span></span></div>
+    <div id="type" class="hidden"></div>
     <div class="translation">{{translation}}</div>
+    <div id="canvas_container" class="canvas_container"></div>
     <div class="controls">
+      <button onclick="clear()">Clear</button>
       <button onclick="init('{{dictionary_form}}', true)">Guides</button>
       <button onclick="init('{{dictionary_form}}', false)">Empty Boxes</button>
     </div>
-    <div id="canvas_container" class="canvas_container"></div>
+    <div class="spacer-bottom"></div>
   </div>
   <script>      
   let dictionary_form = '';
@@ -26,6 +30,11 @@
   const positionsToKeep = 4;
   const drawColor = 'black';
   const templateColor = '#9cc2ff';
+  const typeWords = {
+    'ichidan-verb': '一段動詞',
+    'godan-verb': '五段動詞',
+    'irregular-verb': '不規則動詞'
+  };
 
   let canvasWrappers = [];
   let canvases = [];
@@ -145,6 +154,24 @@
     body = document.getElementsByClassName('card')[0];
     resize();
   }
+
+  function displayType(s) {
+    let type = '{{type}}';
+    if (typeWords[type]) {
+      document.getElementById('type').className = 'type';
+      document.getElementById('type').innerHTML = 
+      `<div class="${type}">${typeWords[type]}</div>`;
+    } else {
+      document.getElementById('type').className = 'hidden';
+    }
+  }
+
+  function clear() {
+    document.getElementById('canvas_container').innerHTML = '';
+  }
+
+  displayType('{{type}}');
   </script>
+  <!-- copy start -->
 </body>
 </html>

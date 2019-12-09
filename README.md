@@ -15,3 +15,29 @@ Currently there's no convenient way to add the templates. Just copy and paste th
 ## Known limitations
 
 Drawing on cards does not work with HiDPI scaling options enabled.
+
+Verb types on the front side of the writing card does not load.
+
+## Fields
+
+### dictionary_form
+
+For the kanji + kana writing
+
+### dictionary_form_kana
+
+For the kana writing. Can be omitted, e. g. if dictionary_form already is kana only.
+
+### translation
+
+The meaningin your preferred language
+
+### type
+
+The type of the word. It is used for displaying additional information. You must use the exact types as me for it to work. The type system might be extended in the future.
+
+Current types in use:
+
+* ichidan-verb
+* godan-verb
+* irregular-verb
