@@ -13,7 +13,11 @@
       <span class="dictionary">{{dictionary_form}}</span><span class="hidden{{dictionary_form_kana}}">
       - 
       <span class="reading">{{dictionary_form_kana}}</span></span></div>
-    <div id="type" class="hidden"></div>
+    <div class="type type-is-{{type}}">
+      <div class="{{type}}-is-ichidan-verb">一段動詞</div>
+      <div class="{{type}}-is-godan-verb">五段動詞</div>
+      <div class="{{type}}-is-irregular-verb">不規則動詞</div>
+    </div>
     <div class="translation">{{translation}}</div>
     <div id="canvas_container" class="canvas_container"></div>
     <div class="controls">
@@ -30,11 +34,6 @@
   const positionsToKeep = 4;
   const drawColor = 'black';
   const templateColor = '#9cc2ff';
-  const typeWords = {
-    'ichidan-verb': '一段動詞',
-    'godan-verb': '五段動詞',
-    'irregular-verb': '不規則動詞'
-  };
 
   let canvasWrappers = [];
   let canvases = [];
@@ -155,22 +154,9 @@
     resize();
   }
 
-  function displayType(s) {
-    let type = '{{type}}';
-    if (typeWords[type]) {
-      document.getElementById('type').className = 'type';
-      document.getElementById('type').innerHTML = 
-      `<div class="${type}">${typeWords[type]}</div>`;
-    } else {
-      document.getElementById('type').className = 'hidden';
-    }
-  }
-
   function clear() {
     document.getElementById('canvas_container').innerHTML = '';
   }
-
-  displayType('{{type}}');
   </script>
   <!-- copy start -->
 </body>

@@ -12,26 +12,12 @@
     <div class="japanese">{{dictionary_form}}</div>
     <div id="anser" class="japanese">{{dictionary_form_kana}}</div>
     <div class="translation">{{translation}}</div>
-    <div id="type" class="hidden"></div>
+    <div class="type type-is-{{type}}">
+      <div class="{{type}}-is-ichidan-verb">一段動詞</div>
+      <div class="{{type}}-is-godan-verb">五段動詞</div>
+      <div class="{{type}}-is-irregular-verb">不規則動詞</div>
+    </div>
   </div>
-  <script>
-    const typeWords = {
-      'ichidan-verb': '一段動詞',
-      'godan-verb': '五段動詞',
-      'irregular-verb': '不規則動詞'
-    };
-
-    function initType() {
-      let type = '{{type}}';
-      if (typeWords[type]) {
-        document.getElementById('type').className = 'type';
-        document.getElementById('type').innerHTML = 
-        `<div class="${type}">${typeWords[type]}</div>`;
-      }
-    }
-
-    setInterval(initType, 100);
-  </script>
   <!-- copy end -->
 </body>
 </html>

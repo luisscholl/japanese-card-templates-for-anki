@@ -29,32 +29,18 @@
       ">What does it mean?</button>
       <span id="answer_translation" class="hidden">{{translation}}</span>
     </div>
-    <div id="type" class="hidden">
-      <button onclick="showType()">Of What type is it?</button>
+    <div class="type type-is-{{type}}">
+      <button id="show_answer_type" onclick="
+        document.getElementById('show_answer_type').className = 'hidden';
+        document.getElementById('answer_type').className = 'not_hidden';
+      ">Of What type is it?</button>
+      <span id="answer_type" class="hidden">
+        <div class="{{type}}-is-ichidan-verb">一段動詞</div>
+        <div class="{{type}}-is-godan-verb">五段動詞</div>
+        <div class="{{type}}-is-irregular-verb">不規則動詞</div>
+      </span>
     </div>
   </div>
-  <script>
-  const typeWords = {
-    'ichidan-verb': '一段動詞',
-    'godan-verb': '五段動詞',
-    'irregular-verb': '不規則動詞'
-  };
-
-  function showType() {
-    let type = '{{type}}';
-    if (typeWords[type]) {
-      document.getElementById('type').innerHTML = 
-      `<div class="${type}">${typeWords[type]}</div>`;
-    }
-  }
-
-  function initType() {
-    let type = '{{type}}';
-    if (typeWords[type]) document.getElementById('type').className = 'type';
-  }
-
-  setInterval(initType, 100);
-  </script>
   <!-- copy end -->
 </body>
 

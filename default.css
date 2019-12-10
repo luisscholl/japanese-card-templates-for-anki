@@ -68,23 +68,36 @@ button {
     padding: 0.2em 0.3em 0.15em 0.3em;
 }
 
+.type {
+    display: none;
+}
+
+.type.type-is-ichidan-verb,
+.type.type-is-godan-verb,
+.type.type-is-irregular-verb {
+    display: block;
+}
+
 .type div {
     color: whitesmoke;
-    display: inline-block;
+    display: none;
     border-radius: 0.22em;
     padding: 0.2em 0.3em 0.15em 0.3em;
 }
 
-.type .ichidan-verb {
+.type .ichidan-verb-is-ichidan-verb {
     background-color: #5e0000;
+    display: inline-block;
 }
 
-.type .godan-verb {
+.type .godan-verb-is-godan-verb {
     background-color: #0e005e;
+    display: inline-block;
 }
 
-.type .irregular-verb {
+.type .irregular-verb-is-irregular-verb {
     background-color: #005e14;
+    display: inline-block;
 }
 
 .spacer-bottom {
