@@ -16,8 +16,6 @@ Currently there's no convenient way to add the templates. Just copy and paste th
 
 Drawing on cards does not work with HiDPI scaling options enabled.
 
-Verb types on the front side of the writing card does not load.
-
 ## Fields
 
 ### dictionary_form
@@ -30,7 +28,7 @@ For the kana writing. Can be omitted, e. g. if dictionary_form already is kana o
 
 ### translation
 
-The meaningin your preferred language
+The meaning in your preferred language
 
 ### type
 
@@ -41,3 +39,10 @@ Current types in use:
 * ichidan-verb
 * godan-verb
 * irregular-verb
+
+Additional types, which I enter into my notes:
+
+* i-adjective
+* na-adjective
+* noun
+* other
