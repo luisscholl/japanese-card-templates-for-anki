@@ -16,10 +16,10 @@ The write cards show you the "proper" writing (dictionary_form field), the kana 
 
 The buttons move velow the boxes after clicking one. So when you have written the word once and are not happy, you can try again. Previously generated boxes will be locked when generating new ones.
 
-<img style="max-height:50vh" src="preview/write_front.PNG"></img>
-<img style="max-height:50vh" src="preview/write_front_guides.PNG"></img>
-<img style="max-height:50vh" src="preview/write_front_empty_boxes.PNG"></img>
-<img style="max-height:50vh" src="preview/write_back.PNG"></img>
+<img height="500" src="preview/write_front.PNG"></img>
+<img height="500" src="preview/write_front_guides.PNG"></img>
+<img height="500" src="preview/write_front_empty_boxes.PNG"></img>
+<img height="500" src="preview/write_back.PNG"></img>
 
 The buttons, e. g. "Which word did you write?", can be clicked to revel the answer in their place.
 
@@ -29,8 +29,8 @@ The type button is only there for verbs and asks for the verb type. Also on the 
 
 Simple recall cards from Japanese to translations, but with consistent design to the write cards.
 
-<img style="max-height:50vh" src="preview/translate_front.PNG"></img>
-<img style="max-height:50vh" src="preview/translate_back.PNG"></img>
+<img height="500" src="preview/translate_front.PNG"></img>
+<img height="500" src="preview/translate_back.PNG"></img>
 
 ## Installtion
 
