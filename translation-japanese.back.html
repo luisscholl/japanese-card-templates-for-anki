@@ -1,17 +1,19 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Translate Back</title>
+  <title>Translation to Japanese - Back</title>
   <link rel="stylesheet" href="default.css">
 </head>
+
 <body>
   <!-- copy start -->
   <div class="content">
-    <div class="japanese">{{dictionary_form}}</div>
-    <div id="anser" class="japanese">{{dictionary_form_kana}}</div>
     <div class="translation">{{translation}}</div>
+    <div class="japanese">{{dictionary_form}}</div>
+    <div id="answer" class="japanese hidden{{dictionary_form_kana}}">{{dictionary_form_kana}}</div>
     <div class="type type-is-{{type}}">
       <div class="{{type}}-is-ichidan-verb">一段動詞</div>
       <div class="{{type}}-is-godan-verb">五段動詞</div>
@@ -20,4 +22,5 @@
   </div>
   <!-- copy end -->
 </body>
+
 </html>
