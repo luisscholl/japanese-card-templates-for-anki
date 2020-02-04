@@ -1,3 +1,9 @@
+@font-face { font-family: KanjiStrokeOrders; src: url('_KanjiStrokeOrders_v4.002.ttf'); }
+
+#font_loader {
+    font-family: 'KanjiStrokeOrders', 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif';
+}
+  
 * {
     box-sizing: border-box;
 }

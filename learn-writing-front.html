@@ -25,7 +25,7 @@
       <button onclick="init('{{dictionary_form}}', true)">Guides</button>
       <button onclick="init('{{dictionary_form}}', false)">Empty Boxes</button>
     </div>
-    <div class="spacer-bottom"></div>
+    <div id="font_loader" class="spacer-bottom">。</div>
   </div>
   <script>      
   let dictionary_form = '';
@@ -99,7 +99,7 @@
     if (drawCharacters) {
       for (let i=0; i < ctxs.length; i++) {
         ctxs[i].fillStyle = templateColor;
-        ctxs[i].font = canvases[0].width + 'px "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
+        ctxs[i].font = canvases[0].width + "px 'KanjiStrokeOrders', 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif";
         ctxs[i].fillText(dictionary_form[i], 0, canvases[0].height * 0.9);
         ctxs[i].fillStyle = drawColor;
       }
