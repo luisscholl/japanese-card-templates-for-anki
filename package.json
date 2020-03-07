@@ -1,0 +1,44 @@
+{
+  "name": "japanese-card-templates-for-anki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node build.js development",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisscholl/japanese-card-templates-for-anki.git"
+  },
+  "author": "Luis Scholl",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/luisscholl/japanese-card-templates-for-anki/issues"
+  },
+  "homepage": "https://github.com/luisscholl/japanese-card-templates-for-anki#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@types/react": "^16.9.19",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "light-server": "^2.6.4",
+    "mini-css-extract-plugin": "^0.9.0",
+    "preact": "^10.3.1",
+    "preact-compat": "^3.19.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  }
+}

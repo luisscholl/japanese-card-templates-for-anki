@@ -1,0 +1,111 @@
+@font-face { font-family: KanjiStrokeOrders; src: url('_KanjiStrokeOrders_v4.002.ttf'); }
+
+#font_loader {
+    font-family: 'KanjiStrokeOrders', 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif';
+}
+  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: arial;
+    font-size: 20px;
+    color: black;
+    background-color: grey;
+    margin: 0;
+}
+
+.content {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: white;
+    min-height: 100vh;
+}
+
+.content>div {
+    padding-bottom: 15px;
+    padding-top: 8px;
+    border-bottom: 2px solid #edeae6;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.japanese .reading {
+    display: inline-block;
+}
+
+.canvas_container {
+    width: 100%;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+
+.canvas_wrapper {
+    background-color: white;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    border: 2px solid #edeae6;
+    border-top: 0;
+}
+
+canvas {
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    border: none;
+    font-size: 0.6em;
+    background-color: #dadada;
+    border-radius: 0.2em;
+    padding: 0.2em 0.3em 0.15em 0.3em;
+}
+
+.type {
+    display: none;
+}
+
+.type.type-is-ichidan-verb,
+.type.type-is-godan-verb,
+.type.type-is-irregular-verb {
+    display: block;
+}
+
+.type div {
+    color: whitesmoke;
+    display: none;
+    border-radius: 0.22em;
+    padding: 0.2em 0.3em 0.15em 0.3em;
+}
+
+.type .ichidan-verb-is-ichidan-verb {
+    background-color: #5e0000;
+    display: inline-block;
+}
+
+.type .godan-verb-is-godan-verb {
+    background-color: #0e005e;
+    display: inline-block;
+}
+
+.type .irregular-verb-is-irregular-verb {
+    background-color: #005e14;
+    display: inline-block;
+}
+
+.spacer-bottom {
+    height: 25vh;
+}
