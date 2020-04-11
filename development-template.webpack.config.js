@@ -16,7 +16,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+    // Must be below test-utils
+    alias: {
+      "react": "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
+    }
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -35,13 +41,5 @@ module.exports = {
       inlineSource: '.(js)$'
     }),
     new HtmlWebpackInlineSourcePlugin()
-  ],
-  "resolve": { 
-    "alias": { 
-      "react": "preact/compat",
-      "react-dom/test-utils": "preact/test-utils",
-      "react-dom": "preact/compat",
-     // Must be below test-utils
-    }
-  }
+  ]
 }

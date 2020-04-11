@@ -1,4 +1,3 @@
-import reveal from './reveal';
 import { h, render } from 'preact';
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;

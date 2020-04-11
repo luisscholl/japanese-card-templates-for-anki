@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node build.js development",
+    "dev": "concurrently -n Webpack,Light-Server \"watch \\\"node build.js development\\\" ./src\"  \"light-server -s ./dist -p 9000\"",
     "build": "node build.js"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "preact-compat": "^3.19.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
+    "watch": "^1.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },

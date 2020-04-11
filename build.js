@@ -10,7 +10,7 @@ let mode = process.argv[2] || 'production';
 
 let template = templates[mode];
 
-titles = titles.map(e => [e + '-back', e + '-front']).flat();
+titles = titles.map(e => [e + 'Back', e + 'Front']).flat();
 
 let title;
 let titleIndex = 0;

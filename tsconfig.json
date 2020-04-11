@@ -3,12 +3,16 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
+    "module": "commonjs",
+    "target": "es2015",
     "jsx": "react",
     "jsxFactory": "h",
     "allowJs": true,
     "incremental": true,
     "tsBuildInfoFile": "./buildcache"
-  }
+  },
+  "include": [
+    "./src/**/*.tsx",
+    "./node_modules/preact/dist/preact"
+  ]
 }
