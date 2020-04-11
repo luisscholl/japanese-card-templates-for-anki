@@ -1,12 +1,15 @@
 import { h, render, Component, RefObject, createRef } from 'preact';
+import persist from './Persist';
 import Canvas from './Canvas';
+import TranslationJapaneseFront from './TranslationJapaneseFront';
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;
 
 type State = {
   hintVisible: boolean,
   dictionary_form_kana: string,
-  canvases: boolean[]
+  canvases: boolean[],
+  displayFront: boolean
 };
 
 class TranslationJapaneseBack extends Component<any, State> {
@@ -16,12 +19,20 @@ class TranslationJapaneseBack extends Component<any, State> {
     this.state = { 
       hintVisible: false, 
       dictionary_form_kana: '{{dictionary_form_kana}}',
-      canvases: []
+      canvases: [],
+      displayFront: persist.getItem() === 'display front'
     };
+    persist.setItem('displayed front')
   }
 
   render(props: any, state: State) {
     return (
+      state.displayFront ? 
+      <span>
+        <TranslationJapaneseFront /> 
+        <button onClick={ this.showBack }>Show Back</button>
+      </span>
+      :
       <div>
         <div>{'{{translation}}'}</div>
         <div>{'{{dictionary_form}}'}</div>
@@ -42,6 +53,10 @@ class TranslationJapaneseBack extends Component<any, State> {
 
   addCanvases = (e: boolean) => {
     this.setState({ canvases: this.state.canvases.concat(e) });
+  }
+
+  showBack = () => {
+    this.setState({ displayFront: false });
   }
 }
 

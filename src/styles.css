@@ -22,7 +22,7 @@ body {
   text-align: center;
 }
 
-.card > div {
+.card > div, .card > span > div {
   width: 80vw;
   margin-left: 20vw; /* swap value with next line, if you are left-handed */
   margin-right: 0vw;  /* set both to 10vw, if you prefer symetry */
@@ -31,7 +31,7 @@ body {
   padding-top: 1em;
 }
 
-.card > div > div {
+.card > div > div, .card > span > div > div {
   width: 100%;
   padding: 8px 15px 8px 8px;
   font-size: 1.8em;

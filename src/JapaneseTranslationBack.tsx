@@ -1,20 +1,36 @@
 import { h, render, Component } from 'preact';
+import persist from './Persist';
+import JapaneseTranslationFront from './JapaneseTranslationFront';
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;
 
-class JapaneseTranslationBack extends Component {
+type State = {
+  hintVisible: boolean,
+  dictionary_form_kana: string,
+  type: string,
+  displayFront: boolean
+};
+class JapaneseTranslationBack extends Component<any, State> {
 
   constructor() {
     super();
     this.state = { 
       hintVisible: false, 
       dictionary_form_kana: '{{dictionary_form_kana}}',
-      type: '{{type}}'
+      type: '{{type}}',
+      displayFront: persist.getItem() === 'display front'
     };
+    persist.setItem('displayed front')
   }
 
-  render(props: any, state: any) {
+  render(props: any, state: State) {
     return (
+      state.displayFront ?
+      <span>
+        <JapaneseTranslationFront />
+        <button onClick={ this.showBack }>Show Back</button>
+      </span>
+      :
       <div>
         <div>{'{{dictionary_form}}'}</div>
         { state.dictionary_form_kana !== '' && <div>{'{{dictionary_form_kana}}'}</div> }
@@ -27,6 +43,10 @@ class JapaneseTranslationBack extends Component {
 
   showHint = () => {
     this.setState({ hintVisible: true });
+  }
+
+  showBack = () => {
+    this.setState({ displayFront: false });
   }
 }
 

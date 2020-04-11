@@ -1,9 +1,10 @@
 import { h, render, Component } from 'preact';
+import persist from './Persist';
 import Canvas from './Canvas';
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;
 
-class TranslationJapaneseFront extends Component {
+export default class TranslationJapaneseFront extends Component {
 
   constructor() {
     super();
@@ -11,6 +12,9 @@ class TranslationJapaneseFront extends Component {
       hintVisible: false, 
       dictionary_form_kana: '{{dictionary_form_kana}}'
     };
+    if (persist.getItem() !== 'displayed front') {
+      persist.setItem('display front');
+    }
   }
 
   render(props: any, state: any) {
