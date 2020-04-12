@@ -6,17 +6,17 @@
 
 2. The decks do not work in the desktop version of Anki. (Only Anki mobile is tested.)
 
-3. I could not fix that the front of the first card is buggy. Therefore just skip to the back, it shows the normal front and a "Show back" button**, which shows the normal back. This only works for the first review session between app restarts.
+3. I could not fix that the front of the first card is buggy. Therefore just skip to the back, it shows the normal front and a "Show back" button, which shows the normal back. This only works for the first review session between app restarts.
 
 4. Follow the following conventions for data entry in order to benefit from potential future development:
 
-The *dictionary_form* field should contain the primary way to write a word in Japanese, i. e. kanji and kana are possible, and always be present.
+The *dictionary_form* field should contain the primary way to write a word in Japanese, i. e. kanji and kana are possible, and should always be present.
 
-The *dictionary_form_kana* field should contain the pronounciation of the word in Japanese. You can put any text or nothing here. I use kana, if *dictionary_form* contains kanji.
+The *dictionary_form_kana* field should contain the pronounciation of the word in Japanese. You can put any text here. This field is optional. I personally use kana and only, if *dictionary_form* contains kanji.
 
-The *translation* field should contain the word in your native language (or any other language, which you want to use).
+The *translation* field should contain the word in your native language (or any other language, which you want to use) and should always be present.
 
-The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *name*, *adverb*, or *other*.
+The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *name*, *adverb*, or *other* and should always be present.
 
 ## Decks
 
@@ -52,7 +52,7 @@ It features a symmetrical layout, i. e. there are two half as wide scroll areas 
 ### [Luis' Japanese Recall](https://ankiweb.net/shared/info/1769805441)
 
 Includes native to Japanese and Japanese to native recall cards.
-It features a symmetrical layout, i. e. there are two half as wide scroll areas on the left and the right.
+It features a symmetrical layout, i. e. there are two half as wide scroll areas on the left and the right. (Dedicated scroll areas are not as important as on the writing decks as you cannot scroll when touching the writing areas, which do not exist here.)
 
 <img height="450" src="preview/IMG_3925.PNG"></img>
 <img height="450" src="preview/IMG_3926.PNG"></img>
@@ -64,9 +64,9 @@ It features a symmetrical layout, i. e. there are two half as wide scroll areas 
    2. [Luis' Japanese Writing left-handed](https://ankiweb.net/shared/info/1934329661)
    3. [Luis' Japanese Writing symmetrical](https://ankiweb.net/shared/info/1569721815)
    4. [Luis' Japanese Recall](https://ankiweb.net/shared/info/1769805441)
-2. Download a stroke order font, I recommend [this one](https://www.nihilist.org.uk/).
-3. Rename the font file to *_KanjiStrokeOrders.ttf*.
-4. Add the font file in Anki. See [Installing Fonts](https://docs.ankiweb.net/#/templates/styling?id=installing-fonts) in the Anki Manual for detailed instructions.
+2. (optional) Download a stroke order font, I recommend [this one](https://www.nihilist.org.uk/).
+3. (optional) Rename the font file to *_KanjiStrokeOrders.ttf*.
+4. (optional) Add the font file in Anki. See [Installing Fonts](https://docs.ankiweb.net/#/templates/styling?id=installing-fonts) in the Anki Manual for detailed instructions.
 
 ## Development
 
