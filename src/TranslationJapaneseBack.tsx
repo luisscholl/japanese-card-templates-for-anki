@@ -1,25 +1,21 @@
-import { h, render, Component, RefObject, createRef } from 'preact';
+import { h, render, Component } from 'preact';
 import persist from './Persist';
-import Canvas from './Canvas';
 import TranslationJapaneseFront from './TranslationJapaneseFront';
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;
 
 type State = {
-  hintVisible: boolean,
   dictionary_form_kana: string,
-  canvases: boolean[],
+  type: string,
   displayFront: boolean
 };
-
 class TranslationJapaneseBack extends Component<any, State> {
 
   constructor() {
     super();
     this.state = { 
-      hintVisible: false, 
       dictionary_form_kana: '{{dictionary_form_kana}}',
-      canvases: [],
+      type: '{{type}}',
       displayFront: persist.getItem() === 'display front'
     };
     persist.setItem('displayed front')
@@ -27,9 +23,9 @@ class TranslationJapaneseBack extends Component<any, State> {
 
   render(props: any, state: State) {
     return (
-      state.displayFront ? 
+      state.displayFront ?
       <span>
-        <TranslationJapaneseFront /> 
+        <TranslationJapaneseFront />
         <button onClick={ this.showBack }>Show Back</button>
       </span>
       :
@@ -37,22 +33,10 @@ class TranslationJapaneseBack extends Component<any, State> {
         <div>{'{{translation}}'}</div>
         <div>{'{{dictionary_form}}'}</div>
         { state.dictionary_form_kana !== '' && <div>{'{{dictionary_form_kana}}'}</div> }
-        <div>
-          {
-            state.canvases.map(drawGuides => 
-              <Canvas word="{{dictionary_form}}" guides={drawGuides} />
-            )
-          }
-        </div>
-        <div>
-          <button onClick={ () => this.addCanvases(false) }>Empty boxes</button>
-          <button onClick={ () => this.addCanvases(true) }>Boxes with guides</button>
-        </div>
+        { state.type === 'ichidan-verb' && <div className="ichidan-verb">Ichidan verb</div> }
+        { state.type === 'godan-verb' && <div className="godan-verb">Godan verb</div> }
+        { state.type === 'irregular-verb' && <div className="irregular-verb">Irregular verb</div> }
       </div>);
-  }
-
-  addCanvases = (e: boolean) => {
-    this.setState({ canvases: this.state.canvases.concat(e) });
   }
 
   showBack = () => {

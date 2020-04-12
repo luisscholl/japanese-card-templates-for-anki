@@ -24,8 +24,6 @@ body {
 
 .card > div, .card > span > div {
   width: 80vw;
-  margin-left: 20vw; /* swap value with next line, if you are left-handed */
-  margin-right: 0vw;  /* set both to 10vw, if you prefer symetry */
   background-color: #fdf6e3; /* base3 */
   min-height: 100vh;
   padding-top: 1em;
@@ -84,4 +82,7 @@ button {
 
 .irregular-verb {
   color: #859900; /* green */
+}.card > div, .card > span > div {
+  margin-left: 0vw;
+  margin-right: 20vw;
 }

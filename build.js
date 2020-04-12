@@ -1,19 +1,11 @@
 const fs = require('fs');
 const webpack = require ('webpack');
-let titles = require('./titles.json');
-let templates = {
-  development: require('./development-template.webpack.config.js'),
-  production: require('./production-template.webpack.config.js')
-}
+const sources = require('./sources.json');
+const decks = require('./decks.json');
+const template = require('./development-template.webpack.config.js')
+const fetch = require('node-fetch');
 
-let mode = process.argv[2] || 'production';
-
-let template = templates[mode];
-
-titles = titles.map(e => [e + 'Back', e + 'Front']).flat();
-
-let title;
-let titleIndex = 0;
+let mode = process.argv[2] || 'development';
 
 fs.rmdirSync('./dist', {
   recursive: true
@@ -21,38 +13,81 @@ fs.rmdirSync('./dist', {
 
 fs.mkdirSync('./dist');
 
-fs.copyFile('./src/styles.css', './dist/styles.css', () => { console.log('Copied stylesheet') });
+let styles = fs.readFileSync('./src/styles/base.css');
+styles += fs.readFileSync('./src/styles/left-handed.css');
+fs.writeFileSync('./dist/styles.css', styles);
+console.log('Processed stylsheets.');
 
-runWebpack();
+webpack(template, (err, stats) => {
+  if (err || stats.hasErrors()) {
+    if (err) console.log(err);
+    if (stats.hasErrors()) console.log(stats);
+  } else {
+    console.log('Processed modules.');
+    if (mode === 'production') uploadToAnki();
+  }
+});
 
-function runWebpack() {
+async function uploadToAnki() {
+  for (let deck of Object.keys(decks)) {
 
-  title = titles[titleIndex];
-  titleIndex++;
-
-  template.entry = './src/' + title + '.tsx';
-  template.output.filename = title + '.js';
-  template.plugins[0].options.filename = mode === 'production' ? title + '.txt' : title + '.html';
-  template.plugins[0].options.templateParameters.title = title.split('-').map(e => e.split('')[0].toUpperCase() + e.substr(1)).join(' ');
-
-  webpack(template,
-    (err, stats) => {
-      if (err || stats.hasErrors()) {
-        console.log('Encountered a problem while processing ' + title);
-        console.log(err);
-        console.log('___');
-        console.log(stats.compilation.errors);
-        console.log('___');
-      } else {
-        console.log('Processed ' + title);
+    let templates = {};
+    for (let cardName of decks[deck].cards) {
+      let frontTemplate = fs.readFileSync(`./dist/${cardName}Front.js`);
+      frontTemplate = `<script>${frontTemplate}</script>`;
+      let backTemplate = fs.readFileSync(`./dist/${cardName}Back.js`);
+      backTemplate = `<script>${backTemplate}</script>`;
+      templates[cardName] = {
+        Front: frontTemplate,
+        Back: backTemplate
       }
-      if (titleIndex < titles.length) runWebpack();
-      else cleanUpDist();
-  });
-}
+    }
 
-function cleanUpDist() {
-  for (title of titles) {
-    //fs.unlink(`./dist/${title}.js`, () => {});
+    await fetch('http://localhost:8765', {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'updateModelTemplates',
+        version: 6,
+        params: {
+          model: {
+            name: deck,
+            templates: templates
+          }
+        }
+      })
+    });
+
+    let styles = '';
+    for (let styleFile of decks[deck].stylesheets) {
+      styles += fs.readFileSync(`./src/styles/${styleFile}.css`);
+    }
+
+    await fetch('http://localhost:8765', {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'updateModelStyling',
+        version: 6,
+        params: {
+          model: {
+            name: deck,
+            css: styles
+          }
+        }
+      })
+    });
+
+    await fetch('http://localhost:8765', {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'sync',
+        version: 6
+      })
+    });
+  }
+
+  console.log('Uploaded to Anki.');
+
+  for (source of Object.keys(sources)) {
+    fs.unlinkSync(`./dist/${source}.js`);
   }
 }

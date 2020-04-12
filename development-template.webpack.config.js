@@ -1,11 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const path = require('path');
-const webpack = require('webpack')
+const webpack = require('webpack');
+const sources = require('./sources.json');
+
+let htmlPlugins = Object.keys(sources).map(e => {
+  return new HtmlWebpackPlugin({
+    filename: `${e}.html`,
+    chunks: [`${e}`],
+    template: './src/development-template.html',
+    templateParameters: {
+      title: `${e}`
+    },
+    inject: 'body',
+    minify: false,
+    xthmml: true,
+    inlineSource: `${e}.js`
+  });
+});
 
 module.exports = {
   mode: 'development',
-  entry: '<entry>',
+  entry: sources,
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -27,20 +43,11 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: '<output_js>'
+    filename: '[name].js'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: '<output_html>',
-      template: './src/development-template.html',
-      templateParameters: {
-        title: '<title>'
-      },
-      inject: 'body',
-      minify: false,
-      xthmml: true,
-      inlineSource: '.(js)$'
-    }),
-    new HtmlWebpackInlineSourcePlugin()
-  ]
+  plugins: []
+    .concat(htmlPlugins)
+    .concat([
+      new HtmlWebpackInlineSourcePlugin() 
+    ])
 }

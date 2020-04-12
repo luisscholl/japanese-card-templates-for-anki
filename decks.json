@@ -1,0 +1,42 @@
+{
+  "Luis' Japanese Recall": {
+    "cards": [
+      "TranslationJapanese",
+      "JapaneseTranslation"
+    ],
+    "stylesheets": [
+      "base",
+      "symmetrical"
+    ]
+  },
+  "Luis' Japanese Writing left-handed": {
+    "cards": [
+      "TranslationJapaneseWriting",
+      "JapaneseTranslation"
+    ],
+    "stylesheets": [
+      "base",
+      "left-handed"
+    ]
+  },
+  "Luis' Japanese Writing right-handed": {
+    "cards": [
+      "TranslationJapaneseWriting",
+      "JapaneseTranslation"
+    ],
+    "stylesheets": [
+      "base",
+      "right-handed"
+    ]
+  },
+  "Luis' Japanese Writing symmetrical": {
+    "cards": [
+      "TranslationJapaneseWriting",
+      "JapaneseTranslation"
+    ],
+    "stylesheets": [
+      "base",
+      "symmetrical"
+    ]
+  }
+}
