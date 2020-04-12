@@ -29,8 +29,7 @@ class TranslationJapaneseWritingBack extends Component<any, State> {
     return (
       state.displayFront ? 
       <span>
-        <TranslationJapaneseWritingFront /> 
-        <button onClick={ this.showBack }>Show Back</button>
+        <TranslationJapaneseWritingFront showBack={ this.showBack } /> 
       </span>
       :
       <div>

@@ -1,14 +1,13 @@
 import { h, render, Component } from 'preact';
 import persist from './Persist';
 
-type PersistenceType = {
-  setItem: (_: string) => void,
-  getItem: () => string
-};
+type Props = {
+  showBack?: () => void
+}
 
 let card: HTMLDivElement = document.getElementsByClassName('card')[0] as HTMLDivElement;
 
-export default class TranslationJapaneseFront extends Component {
+export default class TranslationJapaneseFront extends Component<Props, any> {
 
   constructor() {
     super();
@@ -17,9 +16,12 @@ export default class TranslationJapaneseFront extends Component {
     }
   }
 
-  render(props: any, state: any) {
+  render(props: Props, state: any) {
     return (
-      <div><div>{'{{translation}}'}</div></div>);
+      <div>
+        <div>{'{{translation}}'}</div>
+        { props.showBack && <div><button onClick={ props.showBack }>Show back</button></div> }
+      </div>);
   }
 }
 

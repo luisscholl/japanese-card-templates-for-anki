@@ -33,6 +33,7 @@ async function uploadToAnki() {
 
     let templates = {};
     for (let cardName of decks[deck].cards) {
+      console.log(cardName);
       let frontTemplate = fs.readFileSync(`./dist/${cardName}Front.js`);
       frontTemplate = `<script>${frontTemplate}</script>`;
       let backTemplate = fs.readFileSync(`./dist/${cardName}Back.js`);
@@ -86,8 +87,4 @@ async function uploadToAnki() {
   }
 
   console.log('Uploaded to Anki.');
-
-  for (source of Object.keys(sources)) {
-    fs.unlinkSync(`./dist/${source}.js`);
-  }
 }
