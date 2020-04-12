@@ -1,0 +1,8 @@
+{
+  "JapaneseTranslationFront": "./src/JapaneseTranslationFront.tsx",
+  "JapaneseTranslationBack": "./src/JapaneseTranslationBack.tsx",
+  "TranslationJapaneseFront": "./src/TranslationJapaneseFront.tsx",
+  "TranslationJapaneseBack": "./src/TranslationJapaneseBack.tsx",
+  "TranslationJapaneseWritingFront": "./src/TranslationJapaneseWritingFront.tsx",
+  "TranslationJapaneseWritingBack": "./src/TranslationJapaneseWritingBack.tsx"
+}

@@ -1,84 +1,77 @@
 # Japanese Card Templates for Anki
 
-Hi,
+## Usage and Limitations
 
-these are my in-development card templates for learning Japanese with Anki.
+1. The decks do not contain cards (except from the 2 demo ones), they are intended as templates for your own vocabulary.
 
-They're far from perfect, but feel free to use and modify them.
+2. The decks do not work in the desktop version of Anki. (Only Anki mobile is tested.)
 
-The goal of my development on the card templates is not to create flawless designs, but to have cards good enough for myself.
+3. I could not fix that the front of the first card is buggy. Therefore just skip to the back, it shows the normal front and a "Show back" button, which shows the normal back. This only works for the first review session between app restarts.
 
-## Preview
+4. Follow the following conventions for data entry in order to benefit from potential future development:
 
-### Learn Writing
+The *dictionary_form* field should contain the primary way to write a word in Japanese, i. e. kanji and kana are possible, and should always be present.
 
-The learn writing cards show you the "proper" writing (dictionary_form field), the kana writing (dictionary_form_kana field) and the translation (translation field). Then you get the option to either write it with guides in the background or without.
+The *dictionary_form_kana* field should contain the pronounciation of the word in Japanese. You can put any text here. This field is optional. I personally use kana and only, if *dictionary_form* contains kanji.
 
-The buttons move velow the boxes after clicking one. So when you have written the word once and are not happy, you can try again. Previously generated boxes will be locked when generating new ones.
+The *translation* field should contain the word in your native language (or any other language, which you want to use) and should always be present.
 
-<img height="500" src="preview/write_front.PNG"></img>
-<img height="500" src="preview/write_front_guides.PNG"></img>
-<img height="500" src="preview/write_front_empty_boxes.PNG"></img>
-<img height="500" src="preview/write_back.PNG"></img>
+The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *name*, *adverb*, or *other* and should always be present.
 
-The buttons, e. g. "Which word did you write?", can be clicked to revel the answer in their place.
+## Decks
 
-The type button is only there for verbs and asks for the verb type. Also on the front side, there is an indicator of which verb type the word is, if it is a verb.
+### [Luis' Japanese Writing right-handed](https://ankiweb.net/shared/info/1074138091)
 
-### Japanese - Translation
+Includes native to Japanese writing cards and Japanese to native recall cards.
+The style is optimized for right-handed persons, i. e. the scroll area is on the left.
 
-Simple recall cards from Japanese to translations, but with consistent design to the write cards.
+<img height="450" src="preview/IMG_3912.PNG"></img>
+<img height="450" src="preview/IMG_3913.PNG"></img>
+<img height="450" src="preview/IMG_3914.PNG"></img>
+<img height="450" src="preview/IMG_3915.PNG"></img>
+<img height="450" src="preview/IMG_3927.PNG"></img>
+<img height="450" src="preview/IMG_3924.PNG"></img>
+<img height="450" src="preview/IMG_3921.PNG"></img>
+<img height="450" src="preview/IMG_3922.PNG"></img>
+<img height="450" src="preview/IMG_3923.PNG"></img>
 
-<img height="500" src="preview/translate_front.PNG"></img>
-<img height="500" src="preview/translate_back.PNG"></img>
+### [Luis' Japanese Writing left-handed](https://ankiweb.net/shared/info/1934329661)
 
-### Translation - Japanese
+Includes native to Japanese writing cards and Japanese to native recall cards.
+The style is optimized for left-handed persons, i. e. the scroll area is on the right.
 
-Recall cards from translations to Japanese. They provide empty writing fields for the "proper" (dictionary_form) writing.
+<img height="450" src="preview/IMG_3918.PNG"></img>
 
-<img height="500" src="preview/translation_japanese_front_1.PNG"></img>
-<img height="500" src="preview/translation_japanese_front_2.PNG"></img>
-<img height="500" src="preview/translation_japanese_back.PNG"></img>
+### [Luis' Japanese Writing symmetrical](https://ankiweb.net/shared/info/1569721815)
 
-## Installtion
+Includes native to Japanese writing cards and Japanese to native recall cards.
+It features a symmetrical layout, i. e. there are two half as wide scroll areas on the left and the right.
 
-Currently there's no convenient way to add the templates. Just copy and paste the content of the bodies of the appropirate HTML files and the content of the css file for styling.
+<img height="450" src="preview/IMG_3919.PNG"></img>
 
-## Known limitations
+### [Luis' Japanese Recall](https://ankiweb.net/shared/info/1769805441)
 
-Known limitations might or might not be fixed in the future. :P
+Includes native to Japanese and Japanese to native recall cards.
+It features a symmetrical layout, i. e. there are two half as wide scroll areas on the left and the right. (Dedicated scroll areas are not as important as on the writing decks as you cannot scroll when touching the writing areas, which do not exist here.)
 
-Drawing on cards does not work with HiDPI scaling options enabled.
+<img height="450" src="preview/IMG_3925.PNG"></img>
+<img height="450" src="preview/IMG_3926.PNG"></img>
 
-Clear button on write template does not work.
+## Installation
 
-## Fields
+1. Add the shared deck of your choice by following the instructions on ankiweb.net like for any other shared deck.
+   1. [Luis' Japanese Writing right-handed](https://ankiweb.net/shared/info/1074138091) 
+   2. [Luis' Japanese Writing left-handed](https://ankiweb.net/shared/info/1934329661)
+   3. [Luis' Japanese Writing symmetrical](https://ankiweb.net/shared/info/1569721815)
+   4. [Luis' Japanese Recall](https://ankiweb.net/shared/info/1769805441)
+2. (optional) Download a stroke order font, I recommend [this one](https://www.nihilist.org.uk/).
+3. (optional) Rename the font file to *_KanjiStrokeOrders.ttf*.
+4. (optional) Add the font file in Anki. See [Installing Fonts](https://docs.ankiweb.net/#/templates/styling?id=installing-fonts) in the Anki Manual for detailed instructions.
 
-### dictionary_form
+## Development
 
-For the kanji + kana writing
+To-Do: Write documentation
 
-### dictionary_form_kana
+### anki-persistence submodule
 
-For the kana writing. Can be omitted, e. g. if dictionary_form already is kana only.
-
-### translation
-
-The meaning in your preferred language
-
-### type
-
-The type of the word. It is used for displaying additional information. You must use the exact types as me for it to work. The type system might be extended in the future.
-
-Current types in use:
-
-* ichidan-verb
-* godan-verb
-* irregular-verb
-
-Additional types, which I enter into my notes:
-
-* i-adjective
-* na-adjective
-* noun
-* other
+The anki-persistence submodule is planned to be used in order to use up-to-date code of anki-persistence instead of the copy-pasted code.

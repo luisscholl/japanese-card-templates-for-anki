@@ -1,0 +1,5 @@
+
+.card > div, .card > span > div {
+  margin-left: 20vw;
+  margin-right: 0vw;
+}

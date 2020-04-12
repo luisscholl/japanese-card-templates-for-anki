@@ -1,0 +1,3 @@
+[submodule "anki-persistence"]
+	path = anki-persistence
+	url = https://github.com/SimonLammer/anki-persistence.git
