@@ -4,11 +4,9 @@
 
 1. The decks do not contain cards (except from the 2 demo ones), they are intended as templates for your own vocabulary.
 
-2. The decks do not work in the desktop version of Anki. (Only Anki mobile is tested.)
+2. I could not fix that the front of the first card is buggy. Therefore just skip to the back, it shows the normal front and a "Show back" button, which shows the normal back. This only works for the first review session between app restarts.
 
-3. I could not fix that the front of the first card is buggy. Therefore just skip to the back, it shows the normal front and a "Show back" button, which shows the normal back. This only works for the first review session between app restarts.
-
-4. Follow the following conventions for data entry in order to benefit from potential future development:
+3. Follow the following conventions for data entry in order to benefit from potential future development:
 
 The *dictionary_form* field should contain the primary way to write a word in Japanese, i. e. kanji and kana are possible, and should always be present.
 
@@ -17,6 +15,12 @@ The *dictionary_form_kana* field should contain the pronounciation of the word i
 The *translation* field should contain the word in your native language (or any other language, which you want to use) and should always be present.
 
 The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *name*, *adverb*, or *other* and should always be present.
+
+4. Card styling is optimized for mobile layouts for now. If you use the desktop version, please resize the window to fit your needs. Most sizes are calculated from the horizontal width of the window.
+
+5. Writing cards do not work as intended in AnkiWeb for now. There is an offset between your input and where my code thinks your input is.
+
+6. AnkiDroid support was not tested as I do not own an Android device.
 
 ## Decks
 
