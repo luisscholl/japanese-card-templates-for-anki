@@ -29,7 +29,7 @@ class TranslationJapaneseBack extends Component<any, State> {
       </span>
       :
       <div>
-        <div>{'{{translation}}'}</div>
+        <div dangerouslySetInnerHTML={ { __html: '{{translation}}' } }></div>
         <div>{'{{dictionary_form}}'}</div>
         { state.dictionary_form_kana !== '' && <div>{'{{dictionary_form_kana}}'}</div> }
         { state.type === 'ichidan-verb' && <div className="ichidan-verb">Ichidan verb</div> }

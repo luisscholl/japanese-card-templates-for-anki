@@ -29,7 +29,7 @@ export default class TranslationJapaneseWritingFront extends Component<Props, St
   render(props: Props, state: State) {
     return (
       <div>
-        <div>{'{{translation}}'}</div>
+        <div dangerouslySetInnerHTML={ { __html: '{{translation}}' } }></div>
         <Canvas word="{{dictionary_form}}" guides={false} />
         { props.showBack && <div><button onClick={ props.showBack }>Show back</button></div> }
       </div>);

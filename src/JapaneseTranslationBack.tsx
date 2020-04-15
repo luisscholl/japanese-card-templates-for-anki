@@ -33,7 +33,7 @@ class JapaneseTranslationBack extends Component<any, State> {
       <div>
         <div>{'{{dictionary_form}}'}</div>
         { state.dictionary_form_kana !== '' && <div>{'{{dictionary_form_kana}}'}</div> }
-        <div>{'{{translation}}'}</div>
+        <div dangerouslySetInnerHTML={ { __html: '{{translation}}' } }></div>
         { state.type === 'ichidan-verb' && <div className="ichidan-verb">Ichidan verb</div> }
         { state.type === 'godan-verb' && <div className="godan-verb">Godan verb</div> }
         { state.type === 'irregular-verb' && <div className="irregular-verb">Irregular verb</div> }

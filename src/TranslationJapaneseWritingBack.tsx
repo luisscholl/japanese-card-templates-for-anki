@@ -33,7 +33,7 @@ class TranslationJapaneseWritingBack extends Component<any, State> {
       </span>
       :
       <div>
-        <div>{'{{translation}}'}</div>
+        <div dangerouslySetInnerHTML={ { __html: '{{translation}}' } }></div>
         <div>{'{{dictionary_form}}'}</div>
         { state.dictionary_form_kana !== '' && <div>{'{{dictionary_form_kana}}'}</div> }
         <div>

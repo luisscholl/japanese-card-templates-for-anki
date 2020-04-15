@@ -19,7 +19,7 @@ export default class TranslationJapaneseFront extends Component<Props, any> {
   render(props: Props, state: any) {
     return (
       <div>
-        <div>{'{{translation}}'}</div>
+        <div dangerouslySetInnerHTML={ { __html: '{{translation}}' } }></div>
         { props.showBack && <div><button onClick={ props.showBack }>Show back</button></div> }
       </div>);
   }
