@@ -14,7 +14,7 @@ The *dictionary_form_kana* field should contain the pronounciation of the word i
 
 The *translation* field should contain the word in your native language (or any other language, which you want to use) and should always be present.
 
-The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *name*, *adverb*, or *other* and should always be present.
+The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *no-adjective*, *name*, *adverb*, or *other* and should always be present.
 
 4. Card styling is optimized for mobile layouts for now. If you use the desktop version, please resize the window to fit your needs. Most sizes are calculated from the horizontal width of the window.
 
