@@ -71,13 +71,19 @@ export default class CanvasFrame extends Component<Props> {
   }
 
   drawIfPenDown(position: Point) {
-    this.penPositions.push(position);
-    this.penPositions.shift();
-    if (this.penDown && this.positionsSincePenDown > 2) {
-      this.renderingContext.beginPath();
-      this.renderingContext.moveTo(this.penPositions[0].x - this.pageOffset.x, this.penPositions[0].y - this.pageOffset.y);
-      for (let i=1; i<this.penPositions.length; i++) {
-        this.renderingContext.lineTo(this.penPositions[i].x - this.pageOffset.x, this.penPositions[i].y - this.pageOffset.y);
+    this.penPositions.unshift(position);
+    this.penPositions.pop();
+    if (this.penDown) {
+          this.renderingContext.beginPath();
+          this.renderingContext.moveTo(this.penPositions[0].x - this.pageOffset.x, this.penPositions[0].y - this.pageOffset.y);
+      if (this.positionsSincePenDown >= this.penPositions.length) {
+        for (let i=1; i<this.penPositions.length; i++) {
+          this.renderingContext.lineTo(this.penPositions[i].x - this.pageOffset.x, this.penPositions[i].y - this.pageOffset.y);
+        }
+      } else {
+        for (let i=1; i<this.positionsSincePenDown; i++) {
+          this.renderingContext.lineTo(this.penPositions[i].x - this.pageOffset.x, this.penPositions[i].y - this.pageOffset.y);
+        }
       }
       this.renderingContext.stroke();
       this.renderingContext.closePath();
