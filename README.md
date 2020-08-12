@@ -1,5 +1,7 @@
 # Japanese Card Templates for Anki
 
+This project is disbanded in favor of a similar project for now.
+
 ## Usage and Limitations
 
 1. The decks do not contain cards (except from the 2 demo ones), they are intended as templates for your own vocabulary.
@@ -10,11 +12,11 @@
 
 The *dictionary_form* field should contain the primary way to write a word in Japanese, i. e. kanji and kana are possible, and should always be present.
 
-The *dictionary_form_kana* field should contain the pronounciation of the word in Japanese. You can put any text here. This field is optional. I personally use kana and only, if *dictionary_form* contains kanji.
+The *dictionary_form_kana* field should contain the pronunciation of the word in Japanese. You can put any text here. This field is optional. I personally use kana and only, if *dictionary_form* contains kanji.
 
 The *translation* field should contain the word in your native language (or any other language, which you want to use) and should always be present.
 
-The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatability with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *no-adjective*, *name*, *adverb*, or *other* and should always be present.
+The *type* field is used to show the type of a word when it is important. Currently only verb types are implemented. For compatibility with future versions, it should be one of *ichidan-verb*, *godan-verb*, *irregular-verb*, *noun*, *i-adjective*, *na-adjective*, *no-adjective*, *name*, *adverb*, or *other* and should always be present.
 
 4. Card styling is optimized for mobile layouts for now. If you use the desktop version, please resize the window to fit your needs. Most sizes are calculated from the horizontal width of the window.
 
@@ -74,7 +76,13 @@ It features a symmetrical layout, i. e. there are two half as wide scroll areas 
 
 ## Development
 
-To-Do: Write documentation
+It's a webpack project compiling multiple top level components to HTML and CSS for Anki.
+
+Run ```npm run dev``` for development in the browser.
+
+Install [AnkiConnect](https://ankiweb.net/shared/info/2055492159) and run ```npm run build``` for development in the browser and export to Anki.
+
+The decks.json file serves a configuration file for specifying, which components to use as cards and which style files to include on a per deck basis. The build script expects that for each entry in a cards array, there exists two components called like the entry + "Front" or + "Back" respectively. All of the used components must also be specified in sources.json.
 
 ### anki-persistence submodule
 
